@@ -106,11 +106,6 @@ app.layout = dbc.Container([
 
 ], fluid=True)
 
-
-# -------------------------
-# Functions
-# -------------------------
-
 def classify_shock(map_val, lactate, urine_output, creatinine, cardiac_index):
     """
     Determines whether a patient is in cardiogenic shock.
@@ -286,10 +281,6 @@ def classify_and_store(n_clicks, map_val, lactate, ci, uo, creatinine):
 
     return banner, build_table()
 
-
-# -------------------------
-# Main
-# -------------------------
 
 def main():
     app.run(host=args.host, port=args.port, debug=args.debug)

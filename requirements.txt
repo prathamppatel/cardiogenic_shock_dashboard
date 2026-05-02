@@ -3,4 +3,3 @@ dash-bootstrap-components
 redis
 pandas
 scikit-learn
-gunicorn
