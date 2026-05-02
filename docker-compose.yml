@@ -1,0 +1,25 @@
+---
+services:
+    redis:
+        image: redis:8
+        volumes:
+            - redis-data:/data
+        ports:
+          - "6379:6379"
+        command: redis-server --appendonly yes --appendfsync everysec
+
+    dash:
+        build:
+            context: ./
+            dockerfile: ./Dockerfile
+        depends_on:
+           - redis
+        image: prathamppatel/cardiogenic-shock-dashboard:1.0.0
+        user: "1000:1000"
+        ports:
+          - "8050:8050"
+        restart: unless-stopped
+        command: "python3 app.py"
+
+volumes:
+    redis-data:
